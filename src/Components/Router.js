@@ -8,14 +8,18 @@ import {
 import Home from "../Routes/Home";
 import Search from "../Routes/Search";
 import Ingredient from "../Routes/Ingredient";
+import Header from "./Header";
 
 export default () => (
   <Router>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/search" component={Search} />
-      <Route path="/ingredient" component={Ingredient} />
-      <Redirect from="*" to="/" />
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/search" component={Search} />
+        <Route path="/ingredient" component={Ingredient} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </>
   </Router>
 );
