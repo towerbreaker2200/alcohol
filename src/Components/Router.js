@@ -6,7 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "../Routes/Home";
-import Search from "../Routes/Search";
+import Detail from "../Routes/Detail";
 import Ingredient from "../Routes/Ingredient";
 import Header from "./Header";
 
@@ -16,7 +16,8 @@ export default () => (
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/search" component={Search} />
+        <Route path="/cocktail/:id" component={Detail} />
+        <Route path="/ingredient/:id" component={Detail} />
         <Route path="/ingredient" component={Ingredient} />
         <Redirect from="*" to="/" />
       </Switch>
