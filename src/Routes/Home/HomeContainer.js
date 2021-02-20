@@ -13,14 +13,16 @@ export default class extends React.Component {
 
   async componentDidMount() {
     try {
-      while (this.state.randomCocktails.length < 3) {
+      let tempArray = [];
+      while (tempArray.length < 3) {
         const {
           data: { drinks: randomcoctail },
         } = await randomapi.randomAlcohol();
-        this.setState({
-          randomCocktails: this.state.randomCocktails.concat(randomcoctail),
-        });
+        tempArray = tempArray.concat(randomcoctail);
       }
+      this.setState({
+        randomCocktails: this.state.randomCocktails.concat(tempArray),
+      });
     } catch {
       this.setState({ error: "Can't find it" });
     } finally {
@@ -54,6 +56,7 @@ export default class extends React.Component {
 
   render() {
     const { randomAlcohol, name, cocktailResult, error, loading } = this.state;
+    console.log(this.state);
     return (
       <HomePresenter
         randomAlcohol={randomAlcohol}

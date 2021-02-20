@@ -15,11 +15,11 @@ export default () => (
     <>
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/cocktail" exact component={Home} />
+        <Route path="/ingredient" exact component={Ingredient} />
         <Route path="/cocktail/:id" component={Detail} />
         <Route path="/ingredient/:id" component={Detail} />
-        <Route path="/ingredient" component={Ingredient} />
-        <Redirect from="*" to="/" />
+        <Redirect from="*" to="/cocktail" />
       </Switch>
     </>
   </Router>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const api = axios.create({
   baseURL: "https://www.thecocktaildb.com/api/json/v1/1/",
