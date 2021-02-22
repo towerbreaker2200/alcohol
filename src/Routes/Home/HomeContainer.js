@@ -32,11 +32,19 @@ export default class extends React.Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { name } = this.state;
     if (name !== "") {
       this.searchByName();
     }
+  };
+
+  updateName = (event) => {
+    const {
+      target: { value },
+    } = event;
+    this.setState({ name: value });
   };
 
   searchByName = async () => {
@@ -55,16 +63,23 @@ export default class extends React.Component {
   };
 
   render() {
-    const { randomAlcohol, name, cocktailResult, error, loading } = this.state;
+    const {
+      randomCocktails,
+      name,
+      cocktailResult,
+      error,
+      loading,
+    } = this.state;
     console.log(this.state);
     return (
       <HomePresenter
-        randomAlcohol={randomAlcohol}
+        randomCocktails={randomCocktails}
         name={name}
         cocktailResult={cocktailResult}
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updateName={this.updateName}
       />
     );
   }

@@ -21,18 +21,26 @@ export default class extends React.Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { name } = this.state;
     if (name !== "") {
       this.searchByName();
     }
   };
 
+  updateName = (event) => {
+    const {
+      target: { value },
+    } = event;
+    this.setState({ name: value });
+  };
+
   searchByName = async () => {
     const { name } = this.state;
     try {
       const {
-        data: { drinks: IngredResult },
+        data: { ingredients: IngredResult },
       } = await searchapi.searchIngredientName(name);
       this.setState({ IngredResult });
     } catch {
@@ -53,6 +61,7 @@ export default class extends React.Component {
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updateName={this.updateName}
       />
     );
   }
