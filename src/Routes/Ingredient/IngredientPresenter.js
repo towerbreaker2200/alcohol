@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import Error from "../../Components/Error";
+import Menu from "../../Components/Menu";
 
 const Container = styled.div``;
 
@@ -44,7 +45,17 @@ const IngredientPresenter = ({
           {IngredResult && IngredResult.length > 0 && (
             <Section title="Ingredient Result">
               {IngredResult.map((Ingredient) => (
-                <div>{Ingredient.strIngredient}</div>
+                <Menu
+                  key={Ingredient.idIngredient}
+                  id={Ingredient.idIngredient}
+                  imageUrl={`https://www.thecocktaildb.com/images/ingredients/${Ingredient.strIngredient}-Small.png`}
+                  name={Ingredient.strIngredient}
+                  instruction={
+                    Ingredient.strDescription &&
+                    `${Ingredient.strDescription.substring(0, 100)}...`
+                  }
+                  isIngred={true}
+                />
               ))}
             </Section>
           )}

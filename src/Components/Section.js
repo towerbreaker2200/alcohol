@@ -10,7 +10,7 @@ const Title = styled.span`
 `;
 
 const Grid = styled.div`
-  margin-top: 15px;
+  margin-top: 20px;
 `;
 
 const Section = ({ title, children }) => (

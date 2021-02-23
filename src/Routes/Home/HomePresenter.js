@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import Error from "../../Components/Error";
+import Menu from "../../Components/Menu";
 
 const Container = styled.div``;
 
@@ -45,7 +46,18 @@ const HomePresenter = ({
           {cocktailResult && cocktailResult.length > 0 && (
             <Section title="Cocktail Result">
               {cocktailResult.map((cocktail) => (
-                <div>{cocktail.strDrink}</div>
+                <Menu
+                  key={cocktail.idDrink}
+                  id={cocktail.idDrink}
+                  imageUrl={cocktail.strDrinkThumb}
+                  name={cocktail.strDrink}
+                  instruction={
+                    cocktail.strInstructions > 100
+                      ? `${cocktail.strInstructions.substring(0, 100)}...`
+                      : cocktail.strInstructions
+                  }
+                  isIngred={false}
+                />
               ))}
             </Section>
           )}
@@ -55,7 +67,18 @@ const HomePresenter = ({
       {randomCocktails && randomCocktails.length > 0 && !cocktailResult && (
         <Section title="Random Cocktail">
           {randomCocktails.map((cocktail) => (
-            <div>{cocktail.strDrink}</div>
+            <Menu
+              key={cocktail.idDrink}
+              id={cocktail.idDrink}
+              imageUrl={cocktail.strDrinkThumb}
+              name={cocktail.strDrink}
+              instruction={
+                cocktail.strInstructions > 100
+                  ? `${cocktail.strInstructions.substring(0, 100)}...`
+                  : cocktail.strInstructions
+              }
+              isIngred={false}
+            />
           ))}
         </Section>
       )}
