@@ -42,6 +42,9 @@ export default class extends React.Component {
       const {
         data: { ingredients: IngredResult },
       } = await searchapi.searchIngredientName(name);
+      if (IngredResult === null) {
+        throw Error();
+      }
       this.setState({ IngredResult });
     } catch {
       this.setState({ error: "Can't find result" });

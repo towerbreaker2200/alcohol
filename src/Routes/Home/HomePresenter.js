@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
-import Error from "../../Components/Error";
 import Menu from "../../Components/Menu";
+import Message from "../../Components/Message";
 
 const Container = styled.div``;
 
@@ -64,25 +64,28 @@ const HomePresenter = ({
         </>
       )}
 
-      {randomCocktails && randomCocktails.length > 0 && !cocktailResult && (
-        <Section title="Random Cocktail">
-          {randomCocktails.map((cocktail) => (
-            <Menu
-              key={cocktail.idDrink}
-              id={cocktail.idDrink}
-              imageUrl={cocktail.strDrinkThumb}
-              name={cocktail.strDrink}
-              instruction={
-                cocktail.strInstructions > 100
-                  ? `${cocktail.strInstructions.substring(0, 100)}...`
-                  : cocktail.strInstructions
-              }
-              isIngred={false}
-            />
-          ))}
-        </Section>
-      )}
-      {error && <Error text={error} />}
+      {randomCocktails &&
+        randomCocktails.length > 0 &&
+        !cocktailResult &&
+        !error && (
+          <Section title="Random Cocktail">
+            {randomCocktails.map((cocktail) => (
+              <Menu
+                key={cocktail.idDrink}
+                id={cocktail.idDrink}
+                imageUrl={cocktail.strDrinkThumb}
+                name={cocktail.strDrink}
+                instruction={
+                  cocktail.strInstructions > 100
+                    ? `${cocktail.strInstructions.substring(0, 100)}...`
+                    : cocktail.strInstructions
+                }
+                isIngred={false}
+              />
+            ))}
+          </Section>
+        )}
+      {error && <Message text={error} />}
     </Container>
   );
 

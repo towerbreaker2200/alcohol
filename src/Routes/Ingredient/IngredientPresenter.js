@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
-import Error from "../../Components/Error";
 import Menu from "../../Components/Menu";
+import Message from "../../Components/Message";
 
 const Container = styled.div``;
 
@@ -33,7 +33,7 @@ const IngredientPresenter = ({
     <Container>
       <Form onSubmit={handleSubmit}>
         <Input
-          placeholder="Search your cocktail"
+          placeholder="Search your Ingredient"
           value={name}
           onChange={updateName}
         />
@@ -61,7 +61,10 @@ const IngredientPresenter = ({
           )}
         </>
       )}
-      {error && <Error text={error} />}
+      {error && <Message text={error} />}
+      {IngredResult && IngredResult === 0 && (
+        <Message text="I can't find it. Try another word." />
+      )}
     </Container>
   );
 IngredientPresenter.propTypes = {

@@ -54,6 +54,9 @@ export default class extends React.Component {
       const {
         data: { drinks: cocktailResult },
       } = await searchapi.searchCocktailName(name);
+      if (cocktailResult === null) {
+        throw Error();
+      }
       this.setState({ cocktailResult });
     } catch {
       this.setState({ error: "Can't find result" });
